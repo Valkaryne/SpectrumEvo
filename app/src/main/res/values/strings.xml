@@ -2,5 +2,7 @@
     <string name="app_name">SpectrumEvo</string>
     <string name="game_cover">Cover</string>
 
-    <string name="rating_placeholder">%.0f</string>
+    <string name="rating_placeholder">%.1f</string>
+    <string name="cover_big_placeholder">https://images.igdb.com/igdb/image/upload/t_cover_big/%1$s.jpg</string>
+    <string name="cover_thumb_placeholder">https://images.igdb.com/igdb/image/upload/t_thumb/%1$s.jpg</string>
 </resources>

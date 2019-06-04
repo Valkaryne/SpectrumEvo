@@ -39,12 +39,12 @@ class GamesAdapter : RecyclerView.Adapter<GamesAdapter.ViewHolder>() {
         val tvGenres = itemView.findViewById<TextView>(R.id.tv_card_genres)
 
         Glide.with(itemView)
-            .load("https:${game.cover.url}").apply(RequestOptions.fitCenterTransform())
-            .error(R.drawable.game_off)
+            .load(String.format(context.getString(R.string.cover_thumb_placeholder), game.cover.url)).apply(RequestOptions.fitCenterTransform())
+            .error(R.drawable.ic_game_off)
             .into(ivCover)
 
         tvTitle.text = game.title
-        tvRating.text = String.format(context.getString(R.string.rating_placeholder), game.rating)
+        tvRating.text = String.format(context.getString(R.string.rating_placeholder), game.rating / 10)
         tvGenres.text = game.genres.toString()
     }
 

@@ -12,7 +12,7 @@ class SpectrumViewModel: ViewModel() {
     val adapter: GamesAdapter = GamesAdapter()
 
     private val igdbService = IGDBService.retrofit.create(IGDBService::class.java)
-    private val key = "key"
+    private val key = "5b054f2a99970e757793aef72ec608c5"
 
     private val maxItemsOnPage = 15
 

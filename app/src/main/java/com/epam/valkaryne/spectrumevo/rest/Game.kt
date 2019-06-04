@@ -23,7 +23,7 @@ data class Game(
     private var genresIds: List<Int> = ArrayList()
 
     fun getCoverFromApi(key: String, service: IGDBService): LiveData<ApiResponse<List<Cover>>> {
-        val query = """fields id, url;
+        val query = """fields id, image_id;
             where id = $coverId;"""
         val body = RequestBody.create(MediaType.parse("text/plain"), query)
 
