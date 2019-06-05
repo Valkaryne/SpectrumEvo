@@ -18,7 +18,7 @@ class SpectrumViewModel: ViewModel() {
 
     fun requestPage(page: Int)/*: LiveData<ApiResponse<List<Game>>> */{
         val offset = (page - 1) * maxItemsOnPage
-        val query = """fields name, cover, genres, total_rating;
+        val query = """fields name, cover.image_id, genres.name, total_rating;
             limit $maxItemsOnPage;
             offset $offset;
             where total_rating > 50 & total_rating_count > 275;"""
@@ -27,21 +27,6 @@ class SpectrumViewModel: ViewModel() {
         igdbService.getGames(key, body).observeForever { response ->
             if (response is ApiSuccessResponse) {
                 adapter.addGames(response.body)
-
-                response.body.forEach {game ->
-                    game.getCoverFromApi(key, igdbService).observeForever { coverResponse ->
-                        if (coverResponse is ApiSuccessResponse) {
-                            game.cover = coverResponse.body[0]
-                            adapter.notifyDataSetChanged()
-                        }
-                    }
-                    game.getGenresFromApi(key, igdbService).observeForever { genresResponse ->
-                        if (genresResponse is ApiSuccessResponse) {
-                            game.genres = genresResponse.body
-                            adapter.notifyDataSetChanged()
-                        }
-                    }
-                }
             }
         }
     }
