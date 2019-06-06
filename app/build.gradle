@@ -45,6 +45,8 @@ dependencies {
     // Glide Components
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     kapt 'com.github.bumptech.glide:compiler:4.9.0'
+    // Custom Views
+    implementation 'com.github.FlyingPumba:SimpleRatingBar:v0.1.5'
 
     //Test
     testImplementation 'junit:junit:4.13-beta-3'

@@ -3,6 +3,12 @@
     <string name="game_cover">Cover</string>
 
     <string name="rating_placeholder">%.1f</string>
+    <string name="relative_rating_placeholder"><b>%.1f</b>/10</string>
+    <string name="rating_count_placeholder">based on %1d ratings</string>
+
     <string name="cover_big_placeholder">https://images.igdb.com/igdb/image/upload/t_cover_big/%1$s.jpg</string>
     <string name="cover_thumb_placeholder">https://images.igdb.com/igdb/image/upload/t_thumb/%1$s.jpg</string>
+
+    <string name="details_cover_description">Details Cover</string>
+    <string name="rate_this_game">Rate this game</string>
 </resources>

@@ -1,6 +1,8 @@
 package com.epam.valkaryne.spectrumevo.repository.datamodel
 
 import com.google.gson.annotations.SerializedName
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * @author Valentine Litvin
@@ -19,4 +21,17 @@ data class Game(
     val releaseDate: Long,
     @SerializedName("involved_companies")
     val involvedCompanies: List<InvolvedCompany>
-)
+) {
+    fun getDeveloper(): Company? {
+        val involvedCompanies = involvedCompanies
+        involvedCompanies.forEach { if (it.developer) return it.company }
+        return null
+    }
+
+    fun getReleaseYear(): String {
+        val timestamp = releaseDate
+        val date = Date(timestamp*1000L)
+        val dateFormat = SimpleDateFormat("yyyy")
+        return dateFormat.format(date)
+    }
+}

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.epam.valkaryne.spectrumevo.R
+import com.epam.valkaryne.spectrumevo.listeners.ItemClickListener
 import com.epam.valkaryne.spectrumevo.repository.datamodel.Game
 
 /**
@@ -20,7 +21,7 @@ import com.epam.valkaryne.spectrumevo.repository.datamodel.Game
  * @author Valentine Litvin
  */
 
-class GamesPageListAdapter :
+class GamesPageListAdapter(private val clickListener: ItemClickListener) :
     PagedListAdapter<Game, GamesPageListAdapter.ViewHolder>(itemComparator) {
 
     private lateinit var context: Context
@@ -59,6 +60,8 @@ class GamesPageListAdapter :
         tvRating.text =
             String.format(context.getString(R.string.rating_placeholder), game.rating / 10)
         tvGenres.text = genres.substring(1, genres.length - 1)
+
+        itemView.setOnClickListener{ clickListener.onItemClick(game) }
     }
 
     inner class ViewHolder(val item: CardView) : RecyclerView.ViewHolder(item)
