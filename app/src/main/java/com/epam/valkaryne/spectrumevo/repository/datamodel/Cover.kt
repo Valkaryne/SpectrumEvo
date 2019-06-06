@@ -1,9 +1,11 @@
-package com.epam.valkaryne.spectrumevo.rest
+package com.epam.valkaryne.spectrumevo.repository.datamodel
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ * @author Valentine Litvin
+ */
 data class Cover(
-    val id: Int = 0,
     @SerializedName("image_id")
     val url: String = ""
 )

@@ -38,8 +38,9 @@
                 android:id="@+id/tv_card_genres"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:gravity="center"
+                android:layout_marginStart="12dp"
+                android:maxLines="2"
+                android:gravity="start"
                 android:textColor="@color/colorAccent"
                 android:textSize="14sp"
                 tools:text="[Adventure, Role-Play Game]" />

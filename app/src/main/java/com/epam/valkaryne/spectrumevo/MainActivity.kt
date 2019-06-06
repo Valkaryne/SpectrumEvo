@@ -2,21 +2,14 @@ package com.epam.valkaryne.spectrumevo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.epam.valkaryne.spectrumevo.adapter.GamesAdapter
-import com.epam.valkaryne.spectrumevo.rest.ApiSuccessResponse
-import com.epam.valkaryne.spectrumevo.rest.Game
-import com.epam.valkaryne.spectrumevo.rest.IGDBService
-import okhttp3.MediaType
-import okhttp3.RequestBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.http.Body
+import com.epam.valkaryne.spectrumevo.adapter.GamesPageListAdapter
+import com.epam.valkaryne.spectrumevo.repository.datamodel.Game
+import com.epam.valkaryne.spectrumevo.viewmodel.SpectrumListViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,12 +17,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val viewModel = ViewModelProviders.of(this).get(SpectrumViewModel::class.java)
-
         val gamesRecycler = findViewById<RecyclerView>(R.id.recycler_games)
-        gamesRecycler.adapter = viewModel.adapter
-        gamesRecycler.layoutManager = LinearLayoutManager(this)
+        gamesRecycler.layoutManager = LinearLayoutManager(baseContext)
 
-        viewModel.requestPage(1)
+        val viewModel = ViewModelProviders.of(this).get(SpectrumListViewModel::class.java)
+        val pageListAdapter = GamesPageListAdapter()
+        gamesRecycler.adapter = pageListAdapter
+
+        val observer = Observer<PagedList<Game>> {
+            pageListAdapter.submitList(it)
+        }
+        viewModel.gamesList?.observe(this, observer)
     }
 }

@@ -1,13 +1,16 @@
-package com.epam.valkaryne.spectrumevo.rest
+package com.epam.valkaryne.spectrumevo.repository.datamodel
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ * @author Valentine Litvin
+ */
 data class Game(
     val id: Int,
     @SerializedName("name")
     val title: String = "",
-    var cover: Cover,
-    var genres: List<Genre>,
+    val cover: Cover,
+    val genres: List<Genre>,
     @SerializedName("total_rating")
     val rating: Double = 0.0
 )
