@@ -53,10 +53,7 @@ class GamesPageListAdapter :
             .error(R.drawable.ic_game_off)
             .into(ivCover)
 
-        val genres = if (game.genres.size > 3)
-            game.genres.subList(0, 2).toString()
-        else
-            game.genres.toString()
+        val genres = game.genres.toString()
 
         tvTitle.text = game.title
         tvRating.text =

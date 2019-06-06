@@ -8,9 +8,15 @@ import com.google.gson.annotations.SerializedName
 data class Game(
     val id: Int,
     @SerializedName("name")
-    val title: String = "",
+    val title: String,
     val cover: Cover,
     val genres: List<Genre>,
     @SerializedName("total_rating")
-    val rating: Double = 0.0
+    val rating: Double,
+    @SerializedName("total_rating_count")
+    val ratingCount: Int,
+    @SerializedName("first_release_date")
+    val releaseDate: Long,
+    @SerializedName("involved_companies")
+    val involvedCompanies: List<InvolvedCompany>
 )

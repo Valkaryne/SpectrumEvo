@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
+import com.epam.valkaryne.spectrumevo.MAX_ITEMS_ON_PAGE
 import com.epam.valkaryne.spectrumevo.repository.datamodel.Game
 import com.epam.valkaryne.spectrumevo.repository.network.api.IGDBService
 import okhttp3.MediaType
@@ -82,17 +83,17 @@ class IGDataSource : PageKeyedDataSource<String, Game>() {
     }
 
     private fun initRequestBody(page: Int): RequestBody {
-        val offset = (page - 1) * maxItemsOnPage
+        val offset = (page - 1) * MAX_ITEMS_ON_PAGE
         return RequestBody.create(MediaType.parse("text/plain"), String.format(QUERY, offset))
     }
 
     companion object {
         private val TAG = IGDataSource::class.java.simpleName
         private val API_TAG = "API"
-        private const val maxItemsOnPage = 15
         private const val KEY = "5b054f2a99970e757793aef72ec608c5"
-        private const val QUERY = """fields name, cover.image_id, genres.name, total_rating;
-            limit $maxItemsOnPage;
+        private const val QUERY = """fields name, cover.image_id, genres.name, total_rating, total_rating_count,
+            involved_companies.company.name, involved_companies.developer, first_release_date;
+            limit $MAX_ITEMS_ON_PAGE;
             offset %2d;
             where total_rating > 50 & total_rating_count > 275;"""
     }
