@@ -14,12 +14,13 @@ import java.util.concurrent.Executors
  * @author Valentine Litvin
  */
 class SpectrumNetwork(
-    dataSourceFactory: IGDataSourceFactory,
     boundaryCallback: PagedList.BoundaryCallback<Game>
 ) {
 
     var gamesPaged: LiveData<PagedList<Game>>
         private set
+
+    private val dataSourceFactory = IGDataSourceFactory()
 
     init {
         val pagedListConfig = (PagedList.Config.Builder()).setEnablePlaceholders(false)

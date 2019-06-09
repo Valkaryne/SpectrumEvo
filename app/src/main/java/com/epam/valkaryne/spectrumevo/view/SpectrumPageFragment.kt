@@ -12,13 +12,14 @@ import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.epam.valkaryne.spectrumevo.R
+import com.epam.valkaryne.spectrumevo.adapter.GamesListAdapter
 import com.epam.valkaryne.spectrumevo.adapter.GamesPageListAdapter
 import com.epam.valkaryne.spectrumevo.listeners.ItemClickListener
 import com.epam.valkaryne.spectrumevo.repository.datamodel.Game
 import com.epam.valkaryne.spectrumevo.viewmodel.SpectrumDetailsViewModel
 import com.epam.valkaryne.spectrumevo.viewmodel.SpectrumListViewModel
 
-class SpectrumListFragment : Fragment(), ItemClickListener {
+class SpectrumPageFragment : Fragment(), ItemClickListener {
 
     private lateinit var listViewModel: SpectrumListViewModel
     private lateinit var detailsViewModel: SpectrumDetailsViewModel
@@ -38,10 +39,10 @@ class SpectrumListFragment : Fragment(), ItemClickListener {
     }
 
     private fun registerObservers() {
-        val pageListAdapter = GamesPageListAdapter(this)
-        listViewModel.gamesList?.observe(this,
-            Observer<PagedList<Game>> { list -> pageListAdapter.submitList(list) })
-        recyclerView.adapter = pageListAdapter
+        val listAdapter = GamesListAdapter(this)
+        listViewModel.gamesListLocal?.observe(this,
+            Observer<List<Game>> { list -> listAdapter.submitList(list) })
+        recyclerView.adapter = listAdapter
         detailsViewModel =
             ViewModelProviders.of(activity!!).get(SpectrumDetailsViewModel::class.java)
     }

@@ -117,7 +117,7 @@
                         app:srb_borderColor="@android:color/holo_blue_dark"
                         app:srb_fillColor="@android:color/holo_blue_light"
                         app:srb_numberOfStars="10"
-                        app:srb_rating="3"
+                        app:srb_rating="0"
                         app:srb_starSize="30dp"
                         app:srb_stepSize="0.5" />
                 </LinearLayout>

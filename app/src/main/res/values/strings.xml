@@ -11,4 +11,6 @@
 
     <string name="details_cover_description">Details Cover</string>
     <string name="rate_this_game">Rate this game</string>
+    <string name="spectrum_nav">Spectrum</string>
+    <string name="default_nav">Default</string>
 </resources>

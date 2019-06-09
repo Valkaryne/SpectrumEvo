@@ -1,22 +1,28 @@
 package com.epam.valkaryne.spectrumevo.repository
 
+import android.content.Context
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagedList
 import com.epam.valkaryne.spectrumevo.repository.datamodel.Game
 import com.epam.valkaryne.spectrumevo.repository.network.SpectrumNetwork
-import com.epam.valkaryne.spectrumevo.repository.network.paging.IGDataSourceFactory
+import com.epam.valkaryne.spectrumevo.repository.room.SpectrumDatabase
 
 /**
  * Repository provides application with certain means of getting data.
  *
  * @author Valentine Litvin
  */
-class SpectrumRepository private constructor() {
+class SpectrumRepository private constructor(context: Context) {
 
     private val network: SpectrumNetwork
-    private val liveDataMerger: MediatorLiveData<PagedList<Game>>
+    private val database: SpectrumDatabase
+    private val liveDataMerger: MediatorLiveData<PagedList<Game>> = MediatorLiveData()
+    private val liveDataLocal: MutableLiveData<List<Game>> = MutableLiveData()
 
     private val boundaryCallback = object : PagedList.BoundaryCallback<Game>() {
         override fun onZeroItemsLoaded() {
@@ -26,24 +32,45 @@ class SpectrumRepository private constructor() {
     }
 
     init {
-        val dataSourceFactory = IGDataSourceFactory()
-        network = SpectrumNetwork(dataSourceFactory, boundaryCallback)
+        network = SpectrumNetwork(boundaryCallback)
+        database = SpectrumDatabase.getInstance(context.applicationContext)!!
 
-        liveDataMerger = MediatorLiveData()
+        Thread { fetchGamesFromDatabase() }.start()
+
         liveDataMerger.addSource(network.gamesPaged) { value ->
             liveDataMerger.value = value
-            Log.d(TAG, value.toString())
         }
     }
 
     fun getGames(): LiveData<PagedList<Game>> = liveDataMerger
 
+    fun getGamesFromLocal(): LiveData<List<Game>> = liveDataLocal
+
+    fun insertGameIntoRoom(game: Game) {
+        Thread {
+            database.spectrumDao().insertGame(game)
+            fetchGamesFromDatabase()
+        }.start()
+    }
+
+    fun deleteGameFromRoom(game: Game) {
+        Thread {
+            database.spectrumDao().deleteGame(game)
+            fetchGamesFromDatabase()
+        }.start()
+    }
+
+    private fun fetchGamesFromDatabase() {
+        val games: List<Game> = database.spectrumDao().getGames()
+        Handler(Looper.getMainLooper()).post { liveDataLocal.value = games }
+    }
+
     companion object {
-        private val TAG = SpectrumNetwork::class.java.simpleName
+        private val TAG = SpectrumRepository::class.java.simpleName
         private var instance: SpectrumRepository? = null
-        fun getInstance(): SpectrumRepository? {
+        fun getInstance(context: Context): SpectrumRepository? {
             if (instance == null) {
-                instance = SpectrumRepository()
+                instance = SpectrumRepository(context)
             }
             return instance
         }

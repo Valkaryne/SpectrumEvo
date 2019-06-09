@@ -14,6 +14,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.epam.valkaryne.spectrumevo.R
 import com.epam.valkaryne.spectrumevo.repository.datamodel.Game
 import com.epam.valkaryne.spectrumevo.viewmodel.SpectrumDetailsViewModel
+import com.iarcuschin.simpleratingbar.SimpleRatingBar
 
 class SpectrumDetailsFragment : Fragment() {
 
@@ -51,5 +52,13 @@ class SpectrumDetailsFragment : Fragment() {
                 tvRatingCount.text = String.format(it.getString(R.string.rating_count_placeholder), game.ratingCount)
             }
         })
+
+        val ratingBar = view.findViewById<SimpleRatingBar>(R.id.rating_bar)
+        ratingBar.setOnRatingBarChangeListener { _, rating, _ ->
+            run {
+                if (rating > 0) detailsViewModel.insert()
+                else detailsViewModel.delete()
+            }
+        }
     }
 }
