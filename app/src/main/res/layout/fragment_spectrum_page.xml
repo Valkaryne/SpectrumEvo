@@ -3,9 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_games"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp"/>
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:padding="45dp"/>
 </LinearLayout>

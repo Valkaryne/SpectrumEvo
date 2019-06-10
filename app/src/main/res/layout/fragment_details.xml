@@ -76,7 +76,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:background="#6e6e6e"
-                    android:drawableStart="@drawable/star_filled"
+                    android:drawableStart="@drawable/ic_star_filled"
                     android:drawableTint="@android:color/white"
                     android:gravity="center"
                     android:padding="4dp"
