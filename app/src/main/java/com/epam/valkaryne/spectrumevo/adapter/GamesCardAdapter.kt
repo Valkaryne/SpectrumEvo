@@ -12,8 +12,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.epam.valkaryne.spectrumevo.R
 import com.epam.valkaryne.spectrumevo.adapter.CardAdapter.Companion.MAX_ELEVATION_FACTOR
+import com.epam.valkaryne.spectrumevo.getRandomRating
 import com.epam.valkaryne.spectrumevo.listeners.ItemClickListener
 import com.epam.valkaryne.spectrumevo.repository.datamodel.Game
+import com.epam.valkaryne.spectrumevo.view.widgets.PieRatingLabel
 
 class GamesCardAdapter(private val clickListener: ItemClickListener) : PagerAdapter(), CardAdapter {
 
@@ -53,7 +55,7 @@ class GamesCardAdapter(private val clickListener: ItemClickListener) : PagerAdap
         }
 
         cardView.maxCardElevation = baseElevation * MAX_ELEVATION_FACTOR
-        cardView.setOnClickListener{ clickListener.onItemClick(data[position].game) }
+        //cardView.setOnClickListener{ clickListener.onItemClick(data[position].game) }
         views[position] = cardView
         return view
     }
@@ -66,6 +68,7 @@ class GamesCardAdapter(private val clickListener: ItemClickListener) : PagerAdap
     private fun bind(context: Context, item: CardItem, view: View) {
         val tvTitle = view.findViewById<TextView>(R.id.tv_item_title)
         val ivCover = view.findViewById<ImageView>(R.id.iv_item_cover)
+        val pieItemRating = view.findViewById<PieRatingLabel>(R.id.pie_item_rating)
 
         tvTitle.text = item.title
         Glide.with(context)
@@ -73,6 +76,8 @@ class GamesCardAdapter(private val clickListener: ItemClickListener) : PagerAdap
                 item.coverUrl))
             .apply(RequestOptions.fitCenterTransform())
             .into(ivCover)
+        pieItemRating.setGameData(item.game)
+        pieItemRating.rating = item.rating
     }
 
     private fun clearAdapter() {

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PieRatingLabel">
+        <attr name="textSize" format="integer"/>
+        <attr name="rating" format="float"/>
+        <attr name="infoValue" format="float"/>
+        <attr name="actionValue" format="float"/>
+        <attr name="controlValue" format="float"/>
+    </declare-styleable>
+</resources>

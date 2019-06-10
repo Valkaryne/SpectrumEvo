@@ -12,7 +12,12 @@ import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.epam.valkaryne.spectrumevo.R
+import com.epam.valkaryne.spectrumevo.getRandomRating
 import com.epam.valkaryne.spectrumevo.repository.datamodel.Game
+import com.epam.valkaryne.spectrumevo.repository.datamodel.spectrumfeatures.ActionCriterion
+import com.epam.valkaryne.spectrumevo.repository.datamodel.spectrumfeatures.ControlCriterion
+import com.epam.valkaryne.spectrumevo.repository.datamodel.spectrumfeatures.InformationCriterion
+import com.epam.valkaryne.spectrumevo.repository.datamodel.spectrumfeatures.SpecRating
 import com.epam.valkaryne.spectrumevo.viewmodel.SpectrumDetailsViewModel
 import com.iarcuschin.simpleratingbar.SimpleRatingBar
 
@@ -26,7 +31,8 @@ class SpectrumDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_details, container, false)
-        detailsViewModel = ViewModelProviders.of(activity!!).get(SpectrumDetailsViewModel::class.java)
+        detailsViewModel =
+            ViewModelProviders.of(activity!!).get(SpectrumDetailsViewModel::class.java)
         return view
     }
 
@@ -40,22 +46,59 @@ class SpectrumDetailsFragment : Fragment() {
         val tvRating = view.findViewById<TextView>(R.id.tv_rating)
         val tvRatingCount = view.findViewById<TextView>(R.id.tv_rating_count)
 
-        detailsViewModel.game.observe(this, Observer<Game> {game ->
+        detailsViewModel.game.observe(this, Observer<Game> { game ->
             context?.let {
-                Glide.with(it).load(String.format(it.getString(R.string.cover_big_placeholder), game.cover.url))
+                Glide.with(it).load(
+                    String.format(
+                        it.getString(R.string.cover_big_placeholder),
+                        game.cover.url
+                    )
+                )
                     .apply(RequestOptions.fitCenterTransform())
                     .into(ivCover)
                 tvTitle.text = game.title
                 tvDeveloper.text = game.getDeveloper()?.name
                 tvDate.text = game.getReleaseYear()
-                tvRating.text = String.format(it.getString(R.string.relative_rating_placeholder), game.rating / 10)
-                tvRatingCount.text = String.format(it.getString(R.string.rating_count_placeholder), game.ratingCount)
+                tvRating.text = String.format(
+                    it.getString(R.string.relative_rating_placeholder),
+                    game.rating / 10
+                )
+                tvRatingCount.text =
+                    String.format(it.getString(R.string.rating_count_placeholder), game.ratingCount)
             }
         })
 
         val ratingBar = view.findViewById<SimpleRatingBar>(R.id.rating_bar)
         ratingBar.setOnRatingBarChangeListener { _, rating, _ ->
             run {
+                detailsViewModel.game.value?.let {
+                    it.informationCriterion = InformationCriterion(
+                        getRandomRating(),
+                        getRandomRating(),
+                        getRandomRating(),
+                        getRandomRating(),
+                        getRandomRating()
+                    )
+                    it.actionCriterion = ActionCriterion(
+                        getRandomRating(),
+                        getRandomRating(),
+                        getRandomRating(),
+                        getRandomRating(),
+                        getRandomRating()
+                    )
+                    it.controlCriterion = ControlCriterion(
+                        getRandomRating(),
+                        getRandomRating(),
+                        getRandomRating(),
+                        getRandomRating(),
+                        getRandomRating()
+                    )
+                    it.specRating = SpecRating(
+                        rating.toInt(),
+                        rating.toInt(),
+                        rating.toInt()
+                    )
+                }
                 if (rating > 0) detailsViewModel.insert()
                 else detailsViewModel.delete()
             }
