@@ -67,12 +67,12 @@ class PieRatingLabel(context: Context?, attrs: AttributeSet?) :
         centerText = s
     }
 
-    private fun setData(info: Float = infoValue, action: Float = actionValue, control: Float = controlValue) {
+    private fun setData() {
         val entries = ArrayList<PieEntry>()
 
-        entries.add(PieEntry(info, ""))
-        entries.add(PieEntry(action, ""))
-        entries.add(PieEntry(control, ""))
+        entries.add(PieEntry(infoValue, ""))
+        entries.add(PieEntry(actionValue, ""))
+        entries.add(PieEntry(controlValue, ""))
 
         val dataSet = PieDataSet(entries, "Common Rating")
         dataSet.setDrawIcons(false)

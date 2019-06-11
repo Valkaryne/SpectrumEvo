@@ -38,5 +38,6 @@
     <string name="content_rating">Content (plot, characters, originality)</string>
 
     <string name="confirm">Confirm</string>
+    <string name="rating_title">Rating</string>
 
 </resources>
