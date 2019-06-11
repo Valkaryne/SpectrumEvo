@@ -21,6 +21,7 @@ data class Game(
     @SerializedName("name") val title: String,
     @Embedded(prefix = "cover_") val cover: Cover,
     val genres: List<Genre>,
+    val summary: String,
     @SerializedName("total_rating") val rating: Double,
     @ColumnInfo(name = "rating_count") @SerializedName("total_rating_count") val ratingCount: Int,
     @ColumnInfo(name = "release_date") @SerializedName("first_release_date") val releaseDate: Long,

@@ -92,7 +92,7 @@ class IGDataSource : PageKeyedDataSource<String, Game>() {
         private val API_TAG = "API"
         private const val KEY = "5b054f2a99970e757793aef72ec608c5"
         private const val QUERY = """fields name, cover.image_id, genres.name, total_rating, total_rating_count,
-            involved_companies.company.name, involved_companies.developer, first_release_date;
+            involved_companies.company.name, involved_companies.developer, first_release_date, summary;
             limit $MAX_ITEMS_ON_PAGE;
             offset %2d;
             where total_rating > 50 & total_rating_count > 275;"""
