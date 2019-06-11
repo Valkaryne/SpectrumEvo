@@ -54,6 +54,7 @@ dependencies {
     // Custom Views
     implementation 'com.github.FlyingPumba:SimpleRatingBar:v0.1.5'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'it.xabaras.android:viewpagerindicator:1.0'
 
     //Test
     testImplementation 'junit:junit:4.13-beta-3'

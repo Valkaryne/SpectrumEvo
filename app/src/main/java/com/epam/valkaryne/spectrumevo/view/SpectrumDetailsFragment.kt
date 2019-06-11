@@ -4,22 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.epam.valkaryne.spectrumevo.R
-import com.epam.valkaryne.spectrumevo.getRandomRating
+import com.epam.valkaryne.spectrumevo.adapter.RatingPagesAdapter
 import com.epam.valkaryne.spectrumevo.repository.datamodel.Game
-import com.epam.valkaryne.spectrumevo.repository.datamodel.spectrumfeatures.ActionCriterion
-import com.epam.valkaryne.spectrumevo.repository.datamodel.spectrumfeatures.ControlCriterion
-import com.epam.valkaryne.spectrumevo.repository.datamodel.spectrumfeatures.InformationCriterion
-import com.epam.valkaryne.spectrumevo.repository.datamodel.spectrumfeatures.SpecRating
 import com.epam.valkaryne.spectrumevo.viewmodel.SpectrumDetailsViewModel
-import com.iarcuschin.simpleratingbar.SimpleRatingBar
+import it.xabaras.android.viewpagerindicator.widget.ViewPagerIndicator
 
 class SpectrumDetailsFragment : Fragment() {
 
@@ -68,39 +66,21 @@ class SpectrumDetailsFragment : Fragment() {
             }
         })
 
-        val ratingBar = view.findViewById<SimpleRatingBar>(R.id.rating_bar)
-        ratingBar.setOnRatingBarChangeListener { _, rating, _ ->
-            run {
-                detailsViewModel.game.value?.let {
-                    it.informationCriterion = InformationCriterion(
-                        getRandomRating(),
-                        getRandomRating(),
-                        getRandomRating(),
-                        getRandomRating(),
-                        getRandomRating()
-                    )
-                    it.actionCriterion = ActionCriterion(
-                        getRandomRating(),
-                        getRandomRating(),
-                        getRandomRating(),
-                        getRandomRating(),
-                        getRandomRating()
-                    )
-                    it.controlCriterion = ControlCriterion(
-                        getRandomRating(),
-                        getRandomRating(),
-                        getRandomRating(),
-                        getRandomRating(),
-                        getRandomRating()
-                    )
-                    it.specRating = SpecRating(
-                        rating.toInt(),
-                        rating.toInt(),
-                        rating.toInt()
-                    )
-                }
-                if (rating > 0) detailsViewModel.insert()
-                else detailsViewModel.delete()
+        val viewPager = view.findViewById<ViewPager>(R.id.rate_view_pager)
+        val adapter = RatingPagesAdapter()
+        viewPager.adapter = adapter
+
+        val indicator = view.findViewById<ViewPagerIndicator>(R.id.pager_indicator)
+        indicator.initWithViewPager(viewPager)
+
+        val btnConfirm = view.findViewById<Button>(R.id.btn_confirm)
+        btnConfirm.setOnClickListener {
+            detailsViewModel.game.value?.let { game ->
+                game.specRating = adapter.specRating
+                game.informationCriterion = adapter.infoCriterion
+                game.actionCriterion = adapter.actionCriterion
+                game.controlCriterion = adapter.controlCriterion
+                detailsViewModel.insert()
             }
         }
     }

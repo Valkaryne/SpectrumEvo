@@ -4,4 +4,25 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorWhite">#FFFFFF</color>
+
+    <color name="colorBackground">#FAFAFA</color>
+
+    // spectrum colors
+    <color name="colorSpectrumEducation">#4CB09D</color>
+    <color name="colorSpectrumRiddle">#4CB074</color>
+    <color name="colorSpectrumCommunication">#4CB04C</color>
+    <color name="colorSpectrumRole">#74B04C</color>
+    <color name="colorSpectrumExploration">#9DB04C</color>
+
+    <color name="colorSpectrumCollecting">#B09D4C</color>
+    <color name="colorSpectrumAvoidance">#B0744C</color>
+    <color name="colorSpectrumDestruction">#B04C4C</color>
+    <color name="colorSpectrumCompetition">#B04C74</color>
+    <color name="colorSpectrumSimulation">#B04C9D</color>
+
+    <color name="colorSpectrumCare">#9D4CB0</color>
+    <color name="colorSpectrumBuilding">#744CB0</color>
+    <color name="colorSpectrumMicrocontrol">#4C4CB0</color>
+    <color name="colorSpectrumTactic">#4C74B0</color>
+    <color name="colorSpectrumPlan">#4C9DB0</color>
 </resources>

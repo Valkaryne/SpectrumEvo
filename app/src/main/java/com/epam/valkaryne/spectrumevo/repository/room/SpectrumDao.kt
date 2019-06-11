@@ -5,7 +5,7 @@ import com.epam.valkaryne.spectrumevo.repository.datamodel.Game
 
 @Dao
 interface SpectrumDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertGame(game: Game)
 
     @Query("SELECT * FROM games")

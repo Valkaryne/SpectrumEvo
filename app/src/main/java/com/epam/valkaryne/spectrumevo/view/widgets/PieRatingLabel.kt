@@ -62,7 +62,7 @@ class PieRatingLabel(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun generateCenterSpannableText(rating: Float = this.rating) {
-        val s = SpannableString(if (rating < 10) rating.toString() else "10")
+        val s = SpannableString(if (rating < 10) String.format(context.getString(R.string.rating_placeholder), rating) else "10")
         s.setSpan(AbsoluteSizeSpan(textSize, true), 0, s.length, 0)
         centerText = s
     }

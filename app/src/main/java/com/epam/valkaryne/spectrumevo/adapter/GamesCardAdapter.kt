@@ -12,7 +12,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.epam.valkaryne.spectrumevo.R
 import com.epam.valkaryne.spectrumevo.adapter.CardAdapter.Companion.MAX_ELEVATION_FACTOR
-import com.epam.valkaryne.spectrumevo.getRandomRating
 import com.epam.valkaryne.spectrumevo.listeners.ItemClickListener
 import com.epam.valkaryne.spectrumevo.repository.datamodel.Game
 import com.epam.valkaryne.spectrumevo.view.widgets.PieRatingLabel

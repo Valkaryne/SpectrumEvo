@@ -13,4 +13,30 @@
     <string name="rate_this_game">Rate this game</string>
     <string name="spectrum_nav">Spectrum</string>
     <string name="default_nav">Default</string>
+
+    <string name="feature_start">During the game…</string>
+    <string name="education_feature">…you learn something</string>
+    <string name="riddle_feature">…you solve problems</string>
+    <string name="communication_feature">…you communicate with characters</string>
+    <string name="role_feature">…you determine the role of your hero</string>
+    <string name="exploration_feature">…you explore the world around you</string>
+
+    <string name="collecting_feature">…you collect useful resources</string>
+    <string name="avoidance_feature">…you avoid increased danger</string>
+    <string name="destruction_feature">…you destroy targets</string>
+    <string name="competition_feature">…you compete for victory</string>
+    <string name="simulation_feature">…you control the mechanism or system</string>
+
+    <string name="care_feature">…you satisfy the needs of your characters</string>
+    <string name="building_feature">…you create new objects</string>
+    <string name="microcontrol_feature">…you give orders to characters</string>
+    <string name="tactic_feature">…you organize coordinated interaction of characters</string>
+    <string name="plan_feature">…you make plans for next steps</string>
+
+    <string name="facade_rating">Facade (graphics, music, interface)</string>
+    <string name="mechanics_rating">Mechanics (gameplay, modes, difficulty)</string>
+    <string name="content_rating">Content (plot, characters, originality)</string>
+
+    <string name="confirm">Confirm</string>
+
 </resources>
