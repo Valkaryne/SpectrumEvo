@@ -42,7 +42,7 @@ class BarRatingView(context: Context?, attrs: AttributeSet?) :
 
         setFitBars(true)
 
-        setData()
+        replot()
         a?.recycle()
     }
 
@@ -50,10 +50,10 @@ class BarRatingView(context: Context?, attrs: AttributeSet?) :
         facadeRating = game.specRating.facade.toFloat()
         mechanicsRating = game.specRating.mechanics.toFloat()
         contentRating = game.specRating.content.toFloat()
-        setData()
+        replot()
     }
 
-    private fun setData() {
+    private fun replot() {
         val barWidth = 0.9F
         val spaceForBar = 1F
 

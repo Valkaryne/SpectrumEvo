@@ -57,7 +57,7 @@ class SpectrumPageFragment : Fragment(), ItemClickListener {
     override fun onItemClick(game: Game) {
         detailsViewModel.game.postValue(game)
         if (!detailsViewModel.game.hasActiveObservers()) {
-            val detailsFragment = SpectrumDetailsFragment()
+            val detailsFragment = SpectrumAdvancedDetailsFragment()
             activity?.supportFragmentManager?.beginTransaction()
                 ?.replace(R.id.fragments_container, detailsFragment)?.addToBackStack(null)?.commit()
         }

@@ -54,7 +54,7 @@ class GamesCardAdapter(private val clickListener: ItemClickListener) : PagerAdap
         }
 
         cardView.maxCardElevation = baseElevation * MAX_ELEVATION_FACTOR
-        //cardView.setOnClickListener{ clickListener.onItemClick(data[position].game) }
+        cardView.setOnClickListener{ clickListener.onItemClick(data[position].game) }
         views[position] = cardView
         return view
     }

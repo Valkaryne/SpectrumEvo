@@ -14,6 +14,24 @@
     <string name="spectrum_nav">Spectrum</string>
     <string name="default_nav">Default</string>
 
+    <string name="criterion_education">Education</string>
+    <string name="criterion_riddle">Riddle</string>
+    <string name="criterion_communication">Communication</string>
+    <string name="criterion_role">Role</string>
+    <string name="criterion_exploration">Exploration</string>
+
+    <string name="criterion_collecting">Collecting</string>
+    <string name="criterion_avoidance">Avoidance</string>
+    <string name="criterion_destruction">Destruction</string>
+    <string name="criterion_competition">Competition</string>
+    <string name="criterion_simulation">Simulation</string>
+
+    <string name="criterion_care">Care</string>
+    <string name="criterion_building">Building</string>
+    <string name="criterion_microcontrol">Microcontrol</string>
+    <string name="criterion_tactic">Tactic</string>
+    <string name="criterion_plan">Plan</string>
+
     <string name="feature_start">During the game…</string>
     <string name="education_feature">…you learn something</string>
     <string name="riddle_feature">…you solve problems</string>
@@ -39,5 +57,6 @@
 
     <string name="confirm">Confirm</string>
     <string name="rating_title">Rating</string>
+    <string name="criteria_title">Criteria</string>
 
 </resources>

@@ -50,7 +50,7 @@ class PieRatingLabel(context: Context?, attrs: AttributeSet?) :
         generateCenterSpannableText()
         legend.isEnabled = false
 
-        setData()
+        replot()
         a?.recycle()
     }
 
@@ -58,7 +58,7 @@ class PieRatingLabel(context: Context?, attrs: AttributeSet?) :
         infoValue = game.informationCriterion.criterionValue
         actionValue = game.actionCriterion.criterionValue
         controlValue = game.controlCriterion.criterionValue
-        setData()
+        replot()
     }
 
     private fun generateCenterSpannableText(rating: Float = this.rating) {
@@ -67,7 +67,7 @@ class PieRatingLabel(context: Context?, attrs: AttributeSet?) :
         centerText = s
     }
 
-    private fun setData() {
+    private fun replot() {
         val entries = ArrayList<PieEntry>()
 
         entries.add(PieEntry(infoValue, ""))
