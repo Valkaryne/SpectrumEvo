@@ -17,9 +17,9 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 class WebCriteriaView(context: Context?, attrs: AttributeSet?) :
     RadarChart(context, attrs) {
 
-    private var informationCriterion: InformationCriterion = InformationCriterion(0, 0, 0,0,0)
-    private var actionCriterion: ActionCriterion = ActionCriterion(0,0,0,0,0)
-    private var controlCriterion: ControlCriterion = ControlCriterion(0,0,0,0,0)
+    private var informationCriterion: InformationCriterion = InformationCriterion(0, 0, 0, 0, 0)
+    private var actionCriterion: ActionCriterion = ActionCriterion(0, 0, 0, 0, 0)
+    private var controlCriterion: ControlCriterion = ControlCriterion(0, 0, 0, 0, 0)
 
     private val criteria = arrayListOf(
         context?.getString(R.string.criterion_education),
@@ -43,7 +43,7 @@ class WebCriteriaView(context: Context?, attrs: AttributeSet?) :
 
     init {
         description.isEnabled = false
-        setBackgroundColor(Color.rgb(250, 250, 250))
+        setBackgroundColor(ALMOST_WHITE_COLOR)
 
         webLineWidth = 1F
         webColor = Color.DKGRAY
@@ -51,7 +51,7 @@ class WebCriteriaView(context: Context?, attrs: AttributeSet?) :
         webColorInner = Color.DKGRAY
         webAlpha = 100
 
-        xAxis.textSize = 9F
+        xAxis.textSize = STANDARD_TEXT_SIZE
         xAxis.yOffset = 0F
         xAxis.xOffset = 0F
         xAxis.valueFormatter = object : ValueFormatter() {
@@ -61,10 +61,10 @@ class WebCriteriaView(context: Context?, attrs: AttributeSet?) :
         }
         xAxis.textColor = Color.BLACK
 
-        yAxis.setLabelCount(15, false)
-        yAxis.textSize = 9F
-        yAxis.axisMinimum = -1F
-        yAxis.axisMaximum = 10F
+        yAxis.setLabelCount(LABEL_COUNT, false)
+        yAxis.textSize = STANDARD_TEXT_SIZE
+        yAxis.axisMinimum = AXIS_MINIMUM
+        yAxis.axisMaximum = AXIS_MAXIMUM
         yAxis.setDrawLabels(false)
 
         legend.isEnabled = false
@@ -101,8 +101,8 @@ class WebCriteriaView(context: Context?, attrs: AttributeSet?) :
         entries.add(RadarEntry(controlCriterion.plan.toFloat()))
 
         val dataSet = RadarDataSet(entries, "")
-        dataSet.color = Color.rgb(103, 110, 129)
-        dataSet.fillColor = Color.rgb(103, 110, 129)
+        dataSet.color = BRIGHT_GREY_COLOR
+        dataSet.fillColor = BRIGHT_GREY_COLOR
         dataSet.setDrawFilled(true)
         dataSet.fillAlpha = 180
         dataSet.lineWidth = 2f
@@ -110,11 +110,20 @@ class WebCriteriaView(context: Context?, attrs: AttributeSet?) :
         dataSet.setDrawHighlightIndicators(false)
 
         val data = RadarData(dataSet)
-        data.setValueTextSize(8F)
+        data.setValueTextSize(STANDARD_TEXT_SIZE)
         data.setDrawValues(false)
         data.setValueTextColor(Color.BLACK)
 
         this.data = data
         invalidate()
+    }
+
+    private companion object {
+        const val STANDARD_TEXT_SIZE = 9F
+        const val LABEL_COUNT = 15
+        const val AXIS_MINIMUM = -1F
+        const val AXIS_MAXIMUM = 10F
+        val ALMOST_WHITE_COLOR = Color.rgb(250, 250, 250)
+        val BRIGHT_GREY_COLOR = Color.rgb(103, 110, 129)
     }
 }

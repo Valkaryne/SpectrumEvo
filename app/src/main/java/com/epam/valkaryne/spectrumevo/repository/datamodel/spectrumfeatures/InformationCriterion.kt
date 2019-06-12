@@ -1,5 +1,7 @@
 package com.epam.valkaryne.spectrumevo.repository.datamodel.spectrumfeatures
 
+import com.epam.valkaryne.spectrumevo.repository.datamodel.spectrumfeatures.Criterion.Companion.CRITERIA_COUNT
+
 data class InformationCriterion(
     var education: Int,
     var riddle: Int,
@@ -8,5 +10,5 @@ data class InformationCriterion(
     var exploration: Int
 ) : Criterion {
     override val criterionValue: Float
-        get() = (education + riddle + communication + role + exploration) / 5F
+        get() = (education + riddle + communication + role + exploration) / CRITERIA_COUNT
 }

@@ -54,7 +54,7 @@ class GamesCardAdapter(private val clickListener: ItemClickListener) : PagerAdap
         }
 
         cardView.maxCardElevation = baseElevation * MAX_ELEVATION_FACTOR
-        cardView.setOnClickListener{ clickListener.onItemClick(data[position].game) }
+        cardView.setOnClickListener { clickListener.onItemClick(data[position].game) }
         views[position] = cardView
         return view
     }
@@ -71,8 +71,12 @@ class GamesCardAdapter(private val clickListener: ItemClickListener) : PagerAdap
 
         tvTitle.text = item.title
         Glide.with(context)
-            .load(String.format(context.getString(R.string.cover_big_placeholder),
-                item.coverUrl))
+            .load(
+                String.format(
+                    context.getString(R.string.cover_big_placeholder),
+                    item.coverUrl
+                )
+            )
             .apply(RequestOptions.fitCenterTransform())
             .into(ivCover)
         pieItemRating.setGameData(item.game)

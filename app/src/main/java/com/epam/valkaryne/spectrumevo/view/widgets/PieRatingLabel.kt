@@ -16,7 +16,7 @@ import com.github.mikephil.charting.utils.ColorTemplate
 class PieRatingLabel(context: Context?, attrs: AttributeSet?) :
     PieChart(context, attrs) {
 
-    var textSize: Int = 12
+    var textSize: Int = STANDARD_TEXT_SIZE
 
     var rating: Float = 0F
         set(value) {
@@ -24,16 +24,16 @@ class PieRatingLabel(context: Context?, attrs: AttributeSet?) :
             generateCenterSpannableText()
         }
 
-    var infoValue: Float = 0F
+    private var infoValue: Float = 0F
 
-    var actionValue: Float = 0F
+    private var actionValue: Float = 0F
 
-    var controlValue: Float = 0F
+    private var controlValue: Float = 0F
 
     init {
         val a = context?.obtainStyledAttributes(attrs, R.styleable.PieRatingLabel)
         a?.let { attr ->
-            textSize = attr.getInt(R.styleable.PieRatingLabel_textSize, 12)
+            textSize = attr.getInt(R.styleable.PieRatingLabel_textSize, STANDARD_TEXT_SIZE)
             rating = attr.getFloat(R.styleable.PieRatingLabel_rating, 0F)
             infoValue = attr.getFloat(R.styleable.PieRatingLabel_infoValue, 0F)
             actionValue = attr.getFloat(R.styleable.PieRatingLabel_actionValue, 0F)
@@ -45,7 +45,7 @@ class PieRatingLabel(context: Context?, attrs: AttributeSet?) :
         setCenterTextColor(Color.WHITE)
 
         description.isEnabled = false
-        setExtraOffsets(5F, 10F, 5F, 5F)
+        setExtraOffsets(OFFSET, DOUBLED_OFFSET, OFFSET, OFFSET)
 
         generateCenterSpannableText()
         legend.isEnabled = false
@@ -62,7 +62,12 @@ class PieRatingLabel(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun generateCenterSpannableText(rating: Float = this.rating) {
-        val s = SpannableString(if (rating < 10) String.format(context.getString(R.string.rating_placeholder), rating) else "10")
+        val s = SpannableString(
+            if (rating < RATING_MAXIMUM) String.format(
+                context.getString(R.string.rating_placeholder),
+                rating
+            ) else "10"
+        )
         s.setSpan(AbsoluteSizeSpan(textSize, true), 0, s.length, 0)
         centerText = s
     }
@@ -92,5 +97,12 @@ class PieRatingLabel(context: Context?, attrs: AttributeSet?) :
         highlightValues(null)
         invalidate()
     }
-}
 
+    private companion object {
+        const val RATING_MAXIMUM = 10
+        const val STANDARD_TEXT_SIZE = 12
+
+        const val OFFSET = 5F
+        const val DOUBLED_OFFSET = 10F
+    }
+}

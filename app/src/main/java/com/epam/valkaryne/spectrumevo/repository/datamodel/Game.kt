@@ -1,6 +1,10 @@
 package com.epam.valkaryne.spectrumevo.repository.datamodel
 
-import androidx.room.*
+import androidx.room.Entity
+import androidx.room.TypeConverters
+import androidx.room.PrimaryKey
+import androidx.room.Embedded
+import androidx.room.ColumnInfo
 import com.epam.valkaryne.spectrumevo.repository.datamodel.converters.GenresConverter
 import com.epam.valkaryne.spectrumevo.repository.datamodel.converters.InvolvedCompaniesConverter
 import com.epam.valkaryne.spectrumevo.repository.datamodel.spectrumfeatures.ActionCriterion
@@ -9,7 +13,7 @@ import com.epam.valkaryne.spectrumevo.repository.datamodel.spectrumfeatures.Info
 import com.epam.valkaryne.spectrumevo.repository.datamodel.spectrumfeatures.SpecRating
 import com.google.gson.annotations.SerializedName
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
 
 /**
  * @author Valentine Litvin
@@ -39,8 +43,15 @@ data class Game(
 
     fun getReleaseYear(): String {
         val timestamp = releaseDate
-        val date = Date(timestamp * 1000L)
+        val date = Date(timestamp * TIMESTAMP_MULTIPLIER)
         val dateFormat = SimpleDateFormat("yyyy")
         return dateFormat.format(date)
+    }
+
+    fun getTenScaledRating() = rating / RATING_SCALER
+
+    private companion object {
+        const val TIMESTAMP_MULTIPLIER = 1000L
+        const val RATING_SCALER = 10
     }
 }

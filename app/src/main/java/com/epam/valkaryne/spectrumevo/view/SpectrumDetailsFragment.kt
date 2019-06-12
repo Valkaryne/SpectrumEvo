@@ -59,7 +59,7 @@ class SpectrumDetailsFragment : Fragment() {
                 tvDate.text = game.getReleaseYear()
                 tvRating.text = String.format(
                     it.getString(R.string.relative_rating_placeholder),
-                    game.rating / 10
+                    game.getTenScaledRating()
                 )
                 tvRatingCount.text =
                     String.format(it.getString(R.string.rating_count_placeholder), game.ratingCount)
@@ -69,6 +69,7 @@ class SpectrumDetailsFragment : Fragment() {
         val viewPager = view.findViewById<ViewPager>(R.id.rate_view_pager)
         val adapter = RatingPagesAdapter()
         viewPager.adapter = adapter
+        viewPager.offscreenPageLimit = RATING_PAGES_COUNT
 
         val indicator = view.findViewById<ViewPagerIndicator>(R.id.pager_indicator)
         indicator.initWithViewPager(viewPager)
@@ -83,5 +84,9 @@ class SpectrumDetailsFragment : Fragment() {
                 detailsViewModel.insert()
             }
         }
+    }
+
+    private companion object {
+        const val RATING_PAGES_COUNT = 4
     }
 }

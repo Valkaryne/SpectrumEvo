@@ -13,13 +13,13 @@ class ViewPagerTransformer(private val viewPager: ViewPager, private val adapter
         viewPager.addOnPageChangeListener(this)
     }
 
-    override fun transformPage(page: View, position: Float) {    }
+    override fun transformPage(page: View, position: Float) {}
 
     override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-        var realCurrentPosition = 0
-        var nextPosition = 0
+        val realCurrentPosition: Int
+        val nextPosition: Int
         val baseElevation = adapter.getBaseElevation()
-        var realOffset = 0F
+        val realOffset: Float
         val goingLeft = lastOffset > positionOffset
 
         if (goingLeft) {
@@ -32,8 +32,7 @@ class ViewPagerTransformer(private val viewPager: ViewPager, private val adapter
             realOffset = positionOffset
         }
 
-        if (nextPosition > adapter.getCount() - 1
-            || realCurrentPosition > adapter.getCount() - 1) {
+        if (nextPosition > adapter.getCount() - 1 || realCurrentPosition > adapter.getCount() - 1) {
             return
         }
 
@@ -61,21 +60,25 @@ class ViewPagerTransformer(private val viewPager: ViewPager, private val adapter
         lastOffset = positionOffset
     }
 
-    override fun onPageSelected(position: Int) {    }
+    override fun onPageSelected(position: Int) {}
 
-    override fun onPageScrollStateChanged(state: Int) {    }
+    override fun onPageScrollStateChanged(state: Int) {}
 
     fun enableScaling(enable: Boolean) {
         if (scalingEnabled && !enable) {
             val currentCard = adapter.getCardViewAt(viewPager.currentItem)
             currentCard?.animate()?.scaleY(1F)
             currentCard?.animate()?.scaleX(1F)
-        } else if (!scalingEnabled && enable){
+        } else if (!scalingEnabled && enable) {
             val currentCard = adapter.getCardViewAt(viewPager.currentItem)
-            currentCard?.animate()?.scaleY(1.1F)
-            currentCard?.animate()?.scaleX(1.1F)
+            currentCard?.animate()?.scaleY(ANIMATE_SCALED_VALUE)
+            currentCard?.animate()?.scaleX(ANIMATE_SCALED_VALUE)
         }
 
         scalingEnabled = enable
+    }
+
+    private companion object {
+        const val ANIMATE_SCALED_VALUE = 1.1F
     }
 }

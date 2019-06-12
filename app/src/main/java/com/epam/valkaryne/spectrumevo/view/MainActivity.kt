@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
-            when(item.itemId) {
+            when (item.itemId) {
                 R.id.action_default -> setFragment(SpectrumListFragment())
                 R.id.action_spectrum -> setFragment(SpectrumPageFragment())
             }

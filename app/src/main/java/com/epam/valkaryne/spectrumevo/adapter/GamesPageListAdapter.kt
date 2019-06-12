@@ -58,10 +58,10 @@ class GamesPageListAdapter(private val clickListener: ItemClickListener) :
 
         tvTitle.text = game.title
         tvRating.text =
-            String.format(context.getString(R.string.rating_placeholder), game.rating / 10)
+            String.format(context.getString(R.string.rating_placeholder), game.getTenScaledRating())
         tvGenres.text = genres.substring(1, genres.length - 1)
 
-        itemView.setOnClickListener{ clickListener.onItemClick(game) }
+        itemView.setOnClickListener { clickListener.onItemClick(game) }
     }
 
     inner class ViewHolder(val item: CardView) : RecyclerView.ViewHolder(item)

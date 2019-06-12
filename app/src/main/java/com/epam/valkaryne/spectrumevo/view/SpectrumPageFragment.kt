@@ -34,7 +34,7 @@ class SpectrumPageFragment : Fragment(), ItemClickListener {
 
         listViewModel = ViewModelProviders.of(activity!!).get(SpectrumListViewModel::class.java)
         viewPager.adapter = adapter
-        viewPager.offscreenPageLimit = 3
+        viewPager.offscreenPageLimit = STANDARD_OFFSCREEN_PAGES_LIMIT
 
         cardShadowTransformer = ViewPagerTransformer(viewPager, adapter)
         viewPager.setPageTransformer(false, cardShadowTransformer)
@@ -61,5 +61,9 @@ class SpectrumPageFragment : Fragment(), ItemClickListener {
             activity?.supportFragmentManager?.beginTransaction()
                 ?.replace(R.id.fragments_container, detailsFragment)?.addToBackStack(null)?.commit()
         }
+    }
+
+    private companion object {
+        const val STANDARD_OFFSCREEN_PAGES_LIMIT = 3
     }
 }

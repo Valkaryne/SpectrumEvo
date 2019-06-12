@@ -14,11 +14,11 @@ import com.github.mikephil.charting.utils.ColorTemplate
 class BarRatingView(context: Context?, attrs: AttributeSet?) :
     HorizontalBarChart(context, attrs) {
 
-    var facadeRating: Float = 0F
+    private var facadeRating: Float = 0F
 
-    var mechanicsRating: Float = 0F
+    private var mechanicsRating: Float = 0F
 
-    var contentRating: Float = 0F
+    private var contentRating: Float = 0F
 
     init {
         val a = context?.obtainStyledAttributes(attrs, R.styleable.BarRatingView)
@@ -31,12 +31,12 @@ class BarRatingView(context: Context?, attrs: AttributeSet?) :
         description.isEnabled = false
         axisLeft.setDrawLabels(false)
         axisLeft.setDrawGridLines(false)
-        axisLeft.axisMaximum = 10F
-        axisLeft.axisMinimum = 0F
+        axisLeft.axisMaximum = AXIS_MAXIMUM
+        axisLeft.axisMinimum = AXIS_MINIMUM
         axisRight.setDrawLabels(false)
         axisRight.setDrawGridLines(false)
-        axisRight.axisMaximum = 10F
-        axisRight.axisMinimum = 0F
+        axisRight.axisMaximum = AXIS_MAXIMUM
+        axisRight.axisMinimum = AXIS_MINIMUM
         xAxis.setDrawLabels(false)
         xAxis.setDrawGridLines(false)
 
@@ -54,7 +54,7 @@ class BarRatingView(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun replot() {
-        val barWidth = 0.9F
+        val barWidth = BAR_WIDTH
         val spaceForBar = 1F
 
         val contentValues = ArrayList<BarEntry>()
@@ -78,8 +78,15 @@ class BarRatingView(context: Context?, attrs: AttributeSet?) :
         dataSets.add(facadeSet)
 
         val data = BarData(dataSets)
-        data.setValueTextSize(10F)
+        data.setValueTextSize(STANDARD_TEXT_SIZE)
         data.barWidth = barWidth
         this.data = data
+    }
+
+    private companion object {
+        const val AXIS_MINIMUM = 0F
+        const val AXIS_MAXIMUM = 10F
+        const val STANDARD_TEXT_SIZE = 10F
+        const val BAR_WIDTH = 0.9F
     }
 }

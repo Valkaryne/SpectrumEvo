@@ -42,10 +42,10 @@ class RatingPagesAdapter : PagerAdapter() {
 
     private fun getType(position: Int): Int {
         return when (position) {
-            0 -> TYPE_COMMON_RATING
-            1 -> TYPE_INFO_CRITERIA
-            2 -> TYPE_ACTION_CRITERIA
-            3 -> TYPE_CONTROL_CRITERIA
+            RATING_PAGE -> TYPE_COMMON_RATING
+            INFO_PAGE -> TYPE_INFO_CRITERIA
+            ACTION_PAGE -> TYPE_ACTION_CRITERIA
+            CONTROL_PAGE -> TYPE_CONTROL_CRITERIA
             else -> TYPE_UNKNOWN
         }
     }
@@ -72,6 +72,11 @@ class RatingPagesAdapter : PagerAdapter() {
         const val TYPE_ACTION_CRITERIA = 112
         const val TYPE_CONTROL_CRITERIA = 113
         const val TYPE_UNKNOWN = -1
+
+        const val RATING_PAGE = 0
+        const val INFO_PAGE = 1
+        const val ACTION_PAGE = 2
+        const val CONTROL_PAGE = 3
 
         const val PAGES_COUNT = 4
     }
