@@ -11,6 +11,7 @@ import com.epam.valkaryne.spectrumevo.R
 import com.epam.valkaryne.spectrumevo.adapter.GamesCardAdapter
 import com.epam.valkaryne.spectrumevo.adapter.ViewPagerTransformer
 import com.epam.valkaryne.spectrumevo.listeners.ItemClickListener
+import com.epam.valkaryne.spectrumevo.listeners.OnDeleteClickListener
 import com.epam.valkaryne.spectrumevo.repository.datamodel.Game
 import com.epam.valkaryne.spectrumevo.viewmodel.SpectrumDetailsViewModel
 import com.epam.valkaryne.spectrumevo.viewmodel.SpectrumListViewModel
@@ -18,10 +19,16 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class SpectrumPageFragment : Fragment(), ItemClickListener {
 
+    private val onDeleteClickListener = object : OnDeleteClickListener {
+        override fun onDeleteClick(game: Game) {
+            detailsViewModel.delete(game)
+        }
+    }
+
     private val listViewModel: SpectrumListViewModel by sharedViewModel()
     private val detailsViewModel: SpectrumDetailsViewModel by sharedViewModel()
     private lateinit var viewPager: ViewPager
-    private val adapter = GamesCardAdapter(this)
+    private val adapter = GamesCardAdapter(this, onDeleteClickListener)
     private lateinit var cardShadowTransformer: ViewPagerTransformer
 
     override fun onCreateView(
@@ -46,6 +53,7 @@ class SpectrumPageFragment : Fragment(), ItemClickListener {
     private fun registerObservers() {
         listViewModel.gamesListLocal.observe(this,
             Observer<List<Game>> { list ->
+                viewPager.adapter = adapter
                 adapter.submitList(list)
                 if (list.isNotEmpty()) cardShadowTransformer.enableScaling(true)
             })

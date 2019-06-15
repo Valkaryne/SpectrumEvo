@@ -13,10 +13,14 @@ import com.bumptech.glide.request.RequestOptions
 import com.epam.valkaryne.spectrumevo.R
 import com.epam.valkaryne.spectrumevo.adapter.CardAdapter.Companion.MAX_ELEVATION_FACTOR
 import com.epam.valkaryne.spectrumevo.listeners.ItemClickListener
+import com.epam.valkaryne.spectrumevo.listeners.OnDeleteClickListener
 import com.epam.valkaryne.spectrumevo.repository.datamodel.Game
 import com.epam.valkaryne.spectrumevo.view.widgets.PieRatingLabel
 
-class GamesCardAdapter(private val clickListener: ItemClickListener) : PagerAdapter(), CardAdapter {
+class GamesCardAdapter(
+    private val clickListener: ItemClickListener,
+    private val onDeleteClickListener: OnDeleteClickListener
+) : PagerAdapter(), CardAdapter {
 
     private val views: MutableList<CardView?> = ArrayList()
     private val data: MutableList<CardItem> = ArrayList()
@@ -41,6 +45,8 @@ class GamesCardAdapter(private val clickListener: ItemClickListener) : PagerAdap
 
     override fun isViewFromObject(view: View, `object`: Any) = view == `object`
 
+    override fun getItemPosition(`object`: Any) = POSITION_NONE
+
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val view = LayoutInflater.from(container.context)
             .inflate(R.layout.card_adapter, container, false)
@@ -61,13 +67,13 @@ class GamesCardAdapter(private val clickListener: ItemClickListener) : PagerAdap
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
         container.removeView(`object` as View)
-        views[position] = null
     }
 
     private fun bind(context: Context, item: CardItem, view: View) {
         val tvTitle = view.findViewById<TextView>(R.id.tv_item_title)
         val ivCover = view.findViewById<ImageView>(R.id.iv_item_cover)
         val pieItemRating = view.findViewById<PieRatingLabel>(R.id.pie_item_rating)
+        val ivDelete = view.findViewById<ImageView>(R.id.iv_delete)
 
         tvTitle.text = item.title
         Glide.with(context)
@@ -81,10 +87,13 @@ class GamesCardAdapter(private val clickListener: ItemClickListener) : PagerAdap
             .into(ivCover)
         pieItemRating.setGameData(item.game)
         pieItemRating.rating = item.rating
+
+        ivDelete.setOnClickListener { onDeleteClickListener.onDeleteClick(item.game) }
     }
 
     private fun clearAdapter() {
         views.clear()
         data.clear()
+        notifyDataSetChanged()
     }
 }

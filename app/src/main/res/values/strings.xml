@@ -58,5 +58,6 @@
     <string name="confirm">Confirm</string>
     <string name="rating_title">Rating</string>
     <string name="criteria_title">Criteria</string>
+    <string name="delete_from_db">Delete</string>
 
 </resources>

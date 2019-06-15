@@ -49,14 +49,24 @@
             android:id="@+id/pie_item_rating"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="-15dp"
+            android:layout_gravity="top|start"
             android:layout_marginStart="-15dp"
+            android:layout_marginTop="-15dp"
             app:actionValue="6"
             app:controlValue="1"
             app:infoValue="3"
             app:rating="7.2"
-            app:textSize="40"
-            android:layout_gravity="top|start"/>
+            app:textSize="40" />
+
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="top|end"
+            android:alpha="0.5"
+            android:contentDescription="@string/delete_from_db"
+            android:src="@drawable/ic_close"
+            android:tint="@android:color/black" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.cardview.widget.CardView>

@@ -16,9 +16,7 @@ class SpectrumDetailsViewModel(private val repository: SpectrumRepository) : Vie
         }
     }
 
-    fun delete() {
-        game.value?.let {
-            repository.deleteGameFromRoom(it)
-        }
+    fun delete(game: Game) {
+        repository.deleteGameFromRoom(game)
     }
 }
