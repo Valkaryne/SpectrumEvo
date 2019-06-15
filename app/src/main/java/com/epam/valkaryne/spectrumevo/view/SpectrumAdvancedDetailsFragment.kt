@@ -8,7 +8,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.epam.valkaryne.spectrumevo.R
@@ -16,20 +15,18 @@ import com.epam.valkaryne.spectrumevo.repository.datamodel.Game
 import com.epam.valkaryne.spectrumevo.view.widgets.BarRatingView
 import com.epam.valkaryne.spectrumevo.view.widgets.WebCriteriaView
 import com.epam.valkaryne.spectrumevo.viewmodel.SpectrumDetailsViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class SpectrumAdvancedDetailsFragment : Fragment() {
 
-    private lateinit var detailsViewModel: SpectrumDetailsViewModel
+    private val detailsViewModel: SpectrumDetailsViewModel by sharedViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_advanced_details, container, false)
-        detailsViewModel =
-            ViewModelProviders.of(activity!!).get(SpectrumDetailsViewModel::class.java)
-        return view
+        return inflater.inflate(R.layout.fragment_advanced_details, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

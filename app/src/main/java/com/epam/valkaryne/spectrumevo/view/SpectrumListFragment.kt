@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,11 +15,12 @@ import com.epam.valkaryne.spectrumevo.listeners.ItemClickListener
 import com.epam.valkaryne.spectrumevo.repository.datamodel.Game
 import com.epam.valkaryne.spectrumevo.viewmodel.SpectrumDetailsViewModel
 import com.epam.valkaryne.spectrumevo.viewmodel.SpectrumListViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class SpectrumListFragment : Fragment(), ItemClickListener {
 
-    private lateinit var listViewModel: SpectrumListViewModel
-    private lateinit var detailsViewModel: SpectrumDetailsViewModel
+    private val listViewModel: SpectrumListViewModel by sharedViewModel()
+    private val detailsViewModel: SpectrumDetailsViewModel by sharedViewModel()
     private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
@@ -31,18 +31,15 @@ class SpectrumListFragment : Fragment(), ItemClickListener {
         val view = inflater.inflate(R.layout.fragment_list, container, false)
         recyclerView = view.findViewById(R.id.recycler_games)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        listViewModel = ViewModelProviders.of(activity!!).get(SpectrumListViewModel::class.java)
         registerObservers()
         return view
     }
 
     private fun registerObservers() {
         val pageListAdapter = GamesPageListAdapter(this)
-        listViewModel.gamesList?.observe(this,
+        listViewModel.gamesList.observe(this,
             Observer<PagedList<Game>> { list -> pageListAdapter.submitList(list) })
         recyclerView.adapter = pageListAdapter
-        detailsViewModel =
-            ViewModelProviders.of(activity!!).get(SpectrumDetailsViewModel::class.java)
     }
 
     override fun onItemClick(game: Game) {

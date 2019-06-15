@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.ViewPager
 import com.epam.valkaryne.spectrumevo.R
 import com.epam.valkaryne.spectrumevo.adapter.GamesCardAdapter
@@ -15,11 +14,12 @@ import com.epam.valkaryne.spectrumevo.listeners.ItemClickListener
 import com.epam.valkaryne.spectrumevo.repository.datamodel.Game
 import com.epam.valkaryne.spectrumevo.viewmodel.SpectrumDetailsViewModel
 import com.epam.valkaryne.spectrumevo.viewmodel.SpectrumListViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class SpectrumPageFragment : Fragment(), ItemClickListener {
 
-    private lateinit var listViewModel: SpectrumListViewModel
-    private lateinit var detailsViewModel: SpectrumDetailsViewModel
+    private val listViewModel: SpectrumListViewModel by sharedViewModel()
+    private val detailsViewModel: SpectrumDetailsViewModel by sharedViewModel()
     private lateinit var viewPager: ViewPager
     private val adapter = GamesCardAdapter(this)
     private lateinit var cardShadowTransformer: ViewPagerTransformer
@@ -32,7 +32,6 @@ class SpectrumPageFragment : Fragment(), ItemClickListener {
         val view = inflater.inflate(R.layout.fragment_spectrum_page, container, false)
         viewPager = view.findViewById(R.id.view_pager)
 
-        listViewModel = ViewModelProviders.of(activity!!).get(SpectrumListViewModel::class.java)
         viewPager.adapter = adapter
         viewPager.offscreenPageLimit = STANDARD_OFFSCREEN_PAGES_LIMIT
 
@@ -45,13 +44,11 @@ class SpectrumPageFragment : Fragment(), ItemClickListener {
     }
 
     private fun registerObservers() {
-        listViewModel.gamesListLocal?.observe(this,
+        listViewModel.gamesListLocal.observe(this,
             Observer<List<Game>> { list ->
                 adapter.submitList(list)
                 if (list.isNotEmpty()) cardShadowTransformer.enableScaling(true)
             })
-        detailsViewModel =
-            ViewModelProviders.of(activity!!).get(SpectrumDetailsViewModel::class.java)
     }
 
     override fun onItemClick(game: Game) {
