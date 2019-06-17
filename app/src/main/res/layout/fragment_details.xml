@@ -16,11 +16,10 @@
     <ScrollView
         android:id="@+id/main_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="100dp"
+        android:layout_height="wrap_content"
         android:paddingStart="@dimen/medium"
-        android:paddingEnd="@dimen/medium"
-        android:fillViewport="true">
+        android:paddingTop="100dp"
+        android:paddingEnd="@dimen/medium">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -32,7 +31,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@color/colorBackground">
 
             <TextView
@@ -92,11 +91,11 @@
                 app:layout_constraintTop_toTopOf="@id/tv_rating"
                 tools:text="based on 1570 ratings" />
 
-            <androidx.viewpager.widget.ViewPager
+            <com.epam.valkaryne.spectrumevo.view.custom.WrapableViewPager
                 android:id="@+id/rate_view_pager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_margin="@dimen/medium"
                 app:layout_constraintTop_toBottomOf="@id/tv_rating" />
 
             <it.xabaras.android.viewpagerindicator.widget.ViewPagerIndicator
@@ -119,7 +118,6 @@
                 app:layout_constraintEnd_toEndOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
         </androidx.cardview.widget.CardView>
     </ScrollView>
 </FrameLayout>
