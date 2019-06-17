@@ -10,7 +10,9 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground"
+        android:padding="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -35,7 +37,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:padding="16dp"
-                android:textColor="@android:color/black"
+                android:textColor="@color/colorTextPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -67,6 +69,5 @@
             android:contentDescription="@string/delete_from_db"
             android:src="@drawable/ic_close"
             android:tint="@android:color/black" />
-
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.cardview.widget.CardView>

@@ -15,12 +15,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/rate_this_game"
+        android:textColor="@color/colorTextPrimary"
         android:textSize="16sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/facade_rating" />
+        android:text="@string/facade_rating"
+        android:textColor="@color/colorTextSecondary" />
 
     <com.iarcuschin.simpleratingbar.SimpleRatingBar
         android:id="@+id/facade_bar"
@@ -34,7 +36,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/mechanics_rating" />
+        android:text="@string/mechanics_rating"
+        android:textColor="@color/colorTextSecondary" />
 
     <com.iarcuschin.simpleratingbar.SimpleRatingBar
         android:id="@+id/mechanics_bar"
@@ -48,7 +51,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/content_rating" />
+        android:text="@string/content_rating"
+        android:textColor="@color/colorTextSecondary" />
 
     <com.iarcuschin.simpleratingbar.SimpleRatingBar
         android:id="@+id/content_bar"

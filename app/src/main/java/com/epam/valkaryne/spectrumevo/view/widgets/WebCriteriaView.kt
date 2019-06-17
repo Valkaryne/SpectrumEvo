@@ -17,6 +17,8 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 class WebCriteriaView(context: Context?, attrs: AttributeSet?) :
     RadarChart(context, attrs) {
 
+    private var labelTextColor: Int = 0
+
     private var informationCriterion: InformationCriterion = InformationCriterion(0, 0, 0, 0, 0)
     private var actionCriterion: ActionCriterion = ActionCriterion(0, 0, 0, 0, 0)
     private var controlCriterion: ControlCriterion = ControlCriterion(0, 0, 0, 0, 0)
@@ -42,6 +44,11 @@ class WebCriteriaView(context: Context?, attrs: AttributeSet?) :
     )
 
     init {
+        val a = context?.obtainStyledAttributes(attrs, R.styleable.WebCriteriaView)
+        a?.let { attr ->
+            labelTextColor = attr.getColor(R.styleable.WebCriteriaView_labelTextColor, 0)
+        }
+
         description.isEnabled = false
         setBackgroundColor(ALMOST_WHITE_COLOR)
 
@@ -52,6 +59,7 @@ class WebCriteriaView(context: Context?, attrs: AttributeSet?) :
         webAlpha = 100
 
         xAxis.textSize = STANDARD_TEXT_SIZE
+        xAxis.textColor = labelTextColor
         xAxis.yOffset = 0F
         xAxis.xOffset = 0F
         xAxis.valueFormatter = object : ValueFormatter() {
@@ -59,10 +67,10 @@ class WebCriteriaView(context: Context?, attrs: AttributeSet?) :
                 return criteria[value.toInt() % criteria.size]!!
             }
         }
-        xAxis.textColor = Color.BLACK
 
         yAxis.setLabelCount(LABEL_COUNT, false)
         yAxis.textSize = STANDARD_TEXT_SIZE
+        yAxis.textColor = labelTextColor
         yAxis.axisMinimum = AXIS_MINIMUM
         yAxis.axisMaximum = AXIS_MAXIMUM
         yAxis.setDrawLabels(false)
@@ -70,6 +78,8 @@ class WebCriteriaView(context: Context?, attrs: AttributeSet?) :
         legend.isEnabled = false
 
         replot()
+
+        a?.recycle()
     }
 
     fun setGame(game: Game) {
@@ -111,8 +121,8 @@ class WebCriteriaView(context: Context?, attrs: AttributeSet?) :
 
         val data = RadarData(dataSet)
         data.setValueTextSize(STANDARD_TEXT_SIZE)
+        data.setValueTextColor(labelTextColor)
         data.setDrawValues(false)
-        data.setValueTextColor(Color.BLACK)
 
         this.data = data
         invalidate()

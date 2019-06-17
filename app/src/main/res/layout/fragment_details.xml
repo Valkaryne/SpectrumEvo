@@ -28,7 +28,6 @@
             android:paddingStart="16dp"
             android:paddingTop="32dp"
             android:paddingEnd="16dp"
-            app:cardBackgroundColor="@android:color/white"
             app:cardCornerRadius="2dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:textColor="@android:color/black"
+                android:textColor="@color/colorTextPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -54,6 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:textSize="14sp"
+                android:textColor="@color/colorTextSecondary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_title"
                 tools:text="Bethesda Game Studios" />
@@ -64,6 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:textSize="14sp"
+                android:textColor="@color/colorTextSecondary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_title"
                 tools:text="2011" />
@@ -89,6 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:textColor="@color/colorTextSecondary"
                 app:layout_constraintBottom_toBottomOf="@id/tv_rating"
                 app:layout_constraintStart_toEndOf="@id/tv_rating"
                 app:layout_constraintTop_toTopOf="@id/tv_rating"

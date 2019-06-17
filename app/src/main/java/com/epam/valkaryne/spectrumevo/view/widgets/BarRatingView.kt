@@ -20,12 +20,15 @@ class BarRatingView(context: Context?, attrs: AttributeSet?) :
 
     private var contentRating: Float = 0F
 
+    private var textColor: Int = 0
+
     init {
         val a = context?.obtainStyledAttributes(attrs, R.styleable.BarRatingView)
         a?.let { attr ->
             facadeRating = attr.getFloat(R.styleable.BarRatingView_facadeRating, 0F)
             mechanicsRating = attr.getFloat(R.styleable.BarRatingView_mechanicsRating, 0F)
             contentRating = attr.getFloat(R.styleable.BarRatingView_contentRating, 0F)
+            textColor = attr.getColor(R.styleable.BarRatingView_textColor, 0)
         }
 
         description.isEnabled = false
@@ -39,6 +42,8 @@ class BarRatingView(context: Context?, attrs: AttributeSet?) :
         axisRight.axisMinimum = AXIS_MINIMUM
         xAxis.setDrawLabels(false)
         xAxis.setDrawGridLines(false)
+
+        legend.textColor = textColor
 
         setFitBars(true)
 
@@ -79,6 +84,7 @@ class BarRatingView(context: Context?, attrs: AttributeSet?) :
 
         val data = BarData(dataSets)
         data.setValueTextSize(STANDARD_TEXT_SIZE)
+        data.setValueTextColor(textColor)
         data.barWidth = barWidth
         this.data = data
     }

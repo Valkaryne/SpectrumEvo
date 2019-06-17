@@ -59,5 +59,6 @@
     <string name="rating_title">Rating</string>
     <string name="criteria_title">Criteria</string>
     <string name="delete_from_db">Delete</string>
+    <string name="logo_description">Logo</string>
 
 </resources>

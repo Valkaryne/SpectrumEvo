@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             bottomNavigationView.selectedItemId = R.id.action_spectrum
         }
+
+        setSupportActionBar(findViewById(R.id.toolbar))
     }
 
     private fun setFragment(fragment: Fragment) {
