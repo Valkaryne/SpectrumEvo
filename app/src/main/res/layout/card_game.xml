@@ -28,16 +28,14 @@
             android:orientation="vertical">
 
             <TextView
+                style="@style/SpectrumTitleText"
                 android:id="@+id/tv_card_title"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/small"
                 android:layout_weight="1"
                 android:gravity="start"
-                android:maxLines="2"
-                android:textColor="@color/colorTextPrimary"
-                android:textSize="18sp"
                 tools:text="The Elder Scrolls V: Skyrim" />
 
             <TextView
@@ -45,13 +43,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="@dimen/small"
                 android:ellipsize="end"
                 android:gravity="start"
                 android:maxLines="1"
                 android:textColor="@color/colorAccent"
                 android:textSize="14sp"
-                tools:text="[Adventure, Role-Play Game]" />
+                tools:text="Adventure, Role-Play Game" />
         </LinearLayout>
 
         <TextView

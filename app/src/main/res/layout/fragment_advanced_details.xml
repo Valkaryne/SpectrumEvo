@@ -18,16 +18,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:paddingStart="16dp"
+        android:paddingStart="@dimen/medium"
         android:paddingTop="100dp"
-        android:paddingEnd="16dp">
+        android:paddingEnd="@dimen/medium">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingTop="32dp"
-            android:paddingEnd="16dp"
+            android:paddingStart="@dimen/medium"
+            android:paddingTop="@dimen/big"
+            android:paddingEnd="@dimen/medium"
             app:cardCornerRadius="2dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,55 +36,50 @@
                 android:background="@color/colorBackground">
 
                 <TextView
+                    style="@style/SpectrumTitleText"
                     android:id="@+id/tv_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:textColor="@color/colorTextPrimary"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
+                    android:layout_margin="@dimen/medium"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="The Elder Scrolls V: Skyrim" />
 
                 <TextView
+                    style="@style/SpectrumSecondaryText"
                     android:id="@+id/tv_developer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:textColor="@color/colorTextSecondary"
-                    android:textSize="14sp"
+                    android:layout_marginStart="@dimen/medium"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_title"
                     tools:text="Bethesda Game Studios" />
 
                 <TextView
+                    style="@style/SpectrumSecondaryText"
                     android:id="@+id/tv_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:textColor="@color/colorTextSecondary"
-                    android:textSize="14sp"
+                    android:layout_marginEnd="@dimen/medium"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_title"
                     tools:text="2011" />
 
                 <TextView
+                    style="@style/SpectrumSecondaryText"
                     android:id="@+id/tv_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:textColor="@color/colorTextSecondary"
+                    android:layout_margin="@dimen/medium"
                     app:layout_constraintTop_toBottomOf="@id/tv_date" />
 
                 <TextView
+                    style="@style/SpectrumPrimaryText"
                     android:id="@+id/tv_rating_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/small"
                     android:text="@string/rating_title"
-                    android:textColor="@color/colorTextPrimary"
-                    android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_description" />
@@ -97,13 +92,12 @@
                     app:textColor="@color/colorTextSecondary" />
 
                 <TextView
+                    style="@style/SpectrumPrimaryText"
                     android:id="@+id/tv_criteria_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/small"
                     android:text="@string/criteria_title"
-                    android:textColor="@color/colorTextPrimary"
-                    android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/bar_rating" />
