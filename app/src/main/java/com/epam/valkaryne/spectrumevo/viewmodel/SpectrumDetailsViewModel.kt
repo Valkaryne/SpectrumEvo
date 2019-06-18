@@ -10,13 +10,13 @@ class SpectrumDetailsViewModel(private val repository: SpectrumRepository) : Vie
     var game: MutableLiveData<Game> = MutableLiveData()
         private set
 
-    fun insert() {
-        game.value?.let {
-            repository.insertGameIntoRoom(it)
-        }
+    fun insert(game: Game) {
+        this.game.postValue(game)
+        repository.insertGameIntoRoom(game)
     }
 
     fun delete(game: Game) {
+        this.game.postValue(game)
         repository.deleteGameFromRoom(game)
     }
 }

@@ -37,7 +37,7 @@ class SpectrumListFragment : Fragment(), ItemClickListener {
 
     private fun registerObservers() {
         val pageListAdapter = GamesPageListAdapter(this)
-        listViewModel.gamesList.observe(this,
+        listViewModel.networkGamesList.observe(this,
             Observer<PagedList<Game>> { list -> pageListAdapter.submitList(list) })
         recyclerView.adapter = pageListAdapter
     }

@@ -78,7 +78,7 @@ class SpectrumDetailsFragment : Fragment() {
                 game.informationCriterion = adapter.infoCriterion
                 game.actionCriterion = adapter.actionCriterion
                 game.controlCriterion = adapter.controlCriterion
-                detailsViewModel.insert()
+                detailsViewModel.insert(game)
             }
         }
     }

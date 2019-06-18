@@ -79,6 +79,10 @@ class IGDataSource : PageKeyedDataSource<String, Game>() {
         Log.i(TAG, "Load Before")
     }
 
+    fun refreshData() {
+        invalidate()
+    }
+
     private fun initRequestBody(page: Int): RequestBody {
         val offset = (page - 1) * MAX_ITEMS_ON_PAGE
         return RequestBody.create(MediaType.parse("text/plain"), String.format(QUERY, offset))

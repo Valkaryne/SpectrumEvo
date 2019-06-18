@@ -32,4 +32,8 @@ class SpectrumNetwork(
             .setBoundaryCallback(boundaryCallback)
             .build()
     }
+
+    fun refresh() {
+        dataSourceFactory.refresh()
+    }
 }

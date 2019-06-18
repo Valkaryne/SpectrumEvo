@@ -15,4 +15,8 @@ class IGDataSourceFactory : DataSource.Factory<String, Game>() {
     override fun create(): DataSource<String, Game> {
         return igdbDataSource
     }
+
+    fun refresh() {
+        igdbDataSource.refreshData()
+    }
 }

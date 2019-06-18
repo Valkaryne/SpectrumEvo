@@ -51,7 +51,7 @@ class SpectrumPageFragment : Fragment(), ItemClickListener {
     }
 
     private fun registerObservers() {
-        listViewModel.gamesListLocal.observe(this,
+        listViewModel.localGamesList.observe(this,
             Observer<List<Game>> { list ->
                 viewPager.adapter = adapter
                 adapter.submitList(list)

@@ -8,11 +8,15 @@ import com.epam.valkaryne.spectrumevo.repository.SpectrumRepository
  *
  * @author Valentine Litvin
  */
-class SpectrumListViewModel(repository: SpectrumRepository) : ViewModel() {
+class SpectrumListViewModel(private val repository: SpectrumRepository) : ViewModel() {
 
-    var gamesList = repository.getGames()
+    var networkGamesList = repository.getGames()
         private set
 
-    var gamesListLocal = repository.getGamesFromLocal()
+    var localGamesList = repository.getGamesFromLocal()
         private set
+
+    fun refresh() {
+        repository.refresh()
+    }
 }

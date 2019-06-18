@@ -15,7 +15,7 @@ import com.epam.valkaryne.spectrumevo.repository.room.SpectrumDatabase
  *
  * @author Valentine Litvin
  */
-class SpectrumRepository(network: SpectrumNetwork, private val database: SpectrumDatabase) {
+class SpectrumRepository(private val network: SpectrumNetwork, private val database: SpectrumDatabase) {
 
     private val liveDataMerger: MediatorLiveData<PagedList<Game>> = MediatorLiveData()
     private val liveDataLocal: MutableLiveData<List<Game>> = MutableLiveData()
@@ -31,6 +31,11 @@ class SpectrumRepository(network: SpectrumNetwork, private val database: Spectru
     fun getGames(): LiveData<PagedList<Game>> = liveDataMerger
 
     fun getGamesFromLocal(): LiveData<List<Game>> = liveDataLocal
+
+    fun refresh() {
+        Thread { fetchGamesFromDatabase() }.start()
+        network.refresh()
+    }
 
     fun insertGameIntoRoom(game: Game) {
         Thread {
