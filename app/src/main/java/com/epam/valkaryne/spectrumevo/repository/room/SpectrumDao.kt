@@ -7,6 +7,11 @@ import androidx.room.Query
 import androidx.room.Delete
 import com.epam.valkaryne.spectrumevo.repository.datamodel.Game
 
+/**
+ * Data Access Object for local database.
+ *
+ * @author Valentine Litvin
+ */
 @Dao
 interface SpectrumDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)

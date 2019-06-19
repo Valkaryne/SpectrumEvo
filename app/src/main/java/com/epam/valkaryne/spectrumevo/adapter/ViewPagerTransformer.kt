@@ -3,6 +3,11 @@ package com.epam.valkaryne.spectrumevo.adapter
 import android.view.View
 import androidx.viewpager.widget.ViewPager
 
+/**
+ * [ViewPagerTransformer] provides simple animation on page scrolling.
+ *
+ * @author Valentine Litvin
+ */
 class ViewPagerTransformer(private val viewPager: ViewPager, private val adapter: CardAdapter)
     : ViewPager.OnPageChangeListener, ViewPager.PageTransformer {
 

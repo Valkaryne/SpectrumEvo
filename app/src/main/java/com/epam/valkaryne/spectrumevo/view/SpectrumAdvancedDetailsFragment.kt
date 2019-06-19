@@ -17,6 +17,12 @@ import com.epam.valkaryne.spectrumevo.view.widgets.WebCriteriaView
 import com.epam.valkaryne.spectrumevo.viewmodel.SpectrumDetailsViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
+/**
+ * [SpectrumAdvancedDetailsFragment] is responsible for presentation of Spectrum-form details of
+ * chosen game.
+ *
+ * @author Valentine Litvin
+ */
 class SpectrumAdvancedDetailsFragment : Fragment() {
 
     private val detailsViewModel: SpectrumDetailsViewModel by sharedViewModel()

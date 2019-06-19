@@ -5,6 +5,11 @@ import androidx.lifecycle.ViewModel
 import com.epam.valkaryne.spectrumevo.repository.SpectrumRepository
 import com.epam.valkaryne.spectrumevo.repository.datamodel.Game
 
+/**
+ * [SpectrumDetailsViewModel] is a shared viewModel responsible for working with chosen game.
+ *
+ * @author Valentine Litvin
+ */
 class SpectrumDetailsViewModel(private val repository: SpectrumRepository) : ViewModel() {
 
     var game: MutableLiveData<Game> = MutableLiveData()

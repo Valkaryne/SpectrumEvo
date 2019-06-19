@@ -4,6 +4,11 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.viewpager.widget.ViewPager
 
+/**
+ * [WrapableViewPager] can set its height depends on content.
+ *
+ * @author Valentine Litvin
+ */
 class WrapableViewPager(context: Context, attrs: AttributeSet?) : ViewPager(context, attrs) {
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {

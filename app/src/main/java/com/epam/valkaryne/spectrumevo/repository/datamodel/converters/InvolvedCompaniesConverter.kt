@@ -4,6 +4,11 @@ import androidx.room.TypeConverter
 import com.epam.valkaryne.spectrumevo.repository.datamodel.InvolvedCompany
 import com.google.gson.Gson
 
+/**
+ * Converter to get JSON string from involved companies array and visa-versa.
+ *
+ * @author Valentine Litvin
+ */
 class InvolvedCompaniesConverter {
 
     private val gson = Gson()

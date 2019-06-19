@@ -2,6 +2,11 @@ package com.epam.valkaryne.spectrumevo.repository.datamodel.spectrumfeatures
 
 import com.epam.valkaryne.spectrumevo.repository.datamodel.spectrumfeatures.Criterion.Companion.CRITERIA_COUNT
 
+/**
+ * Data class describes control criteria of a game.
+ *
+ * @author Valentine Litvin
+ */
 data class ControlCriterion(
     var care: Int = 0,
     var building: Int = 0,

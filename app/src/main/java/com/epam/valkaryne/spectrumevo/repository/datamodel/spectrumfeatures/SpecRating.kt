@@ -1,5 +1,10 @@
 package com.epam.valkaryne.spectrumevo.repository.datamodel.spectrumfeatures
 
+/**
+ * Data class describes rating components of a game.
+ *
+ * @author Valentine Litvin
+ */
 data class SpecRating(
     var facade: Int = 0,
     var mechanics: Int = 0,

@@ -6,6 +6,11 @@ import androidx.fragment.app.Fragment
 import com.epam.valkaryne.spectrumevo.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+/**
+ * [MainActivity] contains action bar with logo, bottom navigation view and container for fragments.
+ *
+ * @author Valentine Litvin
+ */
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

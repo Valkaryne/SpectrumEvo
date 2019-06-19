@@ -16,7 +16,7 @@ import com.epam.valkaryne.spectrumevo.listeners.ItemClickListener
 import com.epam.valkaryne.spectrumevo.repository.datamodel.Game
 
 /**
- * Adapter class responsible for deployment game items into RecyclerView.
+ * [GamesPageListAdapter] class is responsible for deployment game items into RecyclerView.
  *
  * @author Valentine Litvin
  */

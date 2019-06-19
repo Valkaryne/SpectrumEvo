@@ -4,6 +4,11 @@ import android.util.Log
 import androidx.paging.PagedList
 import com.epam.valkaryne.spectrumevo.repository.datamodel.Game
 
+/**
+ * [NetworkBoundaryCallback] is callback for network part of repository.
+ *
+ * @author Valentine Litvin
+ */
 class NetworkBoundaryCallback : PagedList.BoundaryCallback<Game>() {
 
     override fun onZeroItemsLoaded() {

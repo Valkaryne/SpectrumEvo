@@ -14,14 +14,19 @@ import com.github.mikephil.charting.data.RadarDataSet
 import com.github.mikephil.charting.data.RadarEntry
 import com.github.mikephil.charting.formatter.ValueFormatter
 
+/**
+ * [WebCriteriaView] is a widget displays game criteria in the shape of web-of-weights.
+ *
+ * @author Valentine Litvin
+ */
 class WebCriteriaView(context: Context?, attrs: AttributeSet?) :
     RadarChart(context, attrs) {
 
     private var labelTextColor: Int = 0
 
-    private var informationCriterion: InformationCriterion = InformationCriterion(0, 0, 0, 0, 0)
-    private var actionCriterion: ActionCriterion = ActionCriterion(0, 0, 0, 0, 0)
-    private var controlCriterion: ControlCriterion = ControlCriterion(0, 0, 0, 0, 0)
+    private var informationCriterion: InformationCriterion = InformationCriterion()
+    private var actionCriterion: ActionCriterion = ActionCriterion()
+    private var controlCriterion: ControlCriterion = ControlCriterion()
 
     private val criteria = arrayListOf(
         context?.getString(R.string.criterion_education),

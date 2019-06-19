@@ -8,6 +8,11 @@ import com.epam.valkaryne.spectrumevo.repository.datamodel.spectrumfeatures.Info
 import com.epam.valkaryne.spectrumevo.repository.datamodel.spectrumfeatures.SpecRating
 import com.iarcuschin.simpleratingbar.SimpleRatingBar
 
+/**
+ * Utility object for binding pages of nested ViewPager.
+ *
+ * @author Valentine Litvin
+ */
 object RatingBinder {
     fun bindCommonRating(view: View, specRating: SpecRating) {
         val facadeBar = view.findViewById<SimpleRatingBar>(R.id.facade_bar)

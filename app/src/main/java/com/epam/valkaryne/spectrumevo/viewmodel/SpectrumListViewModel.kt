@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.epam.valkaryne.spectrumevo.repository.SpectrumRepository
 
 /**
- * [ViewModel] responsible for representing local/network game data as paged list.
+ * [ViewModel] responsible for representing local/network game data as list.
  *
  * @author Valentine Litvin
  */

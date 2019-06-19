@@ -17,6 +17,11 @@ import com.epam.valkaryne.spectrumevo.viewmodel.SpectrumDetailsViewModel
 import com.epam.valkaryne.spectrumevo.viewmodel.SpectrumListViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
+/**
+ * [SpectrumListFragment] is responsible for presentation of games list received from API.
+ *
+ * @author Valentine Litvin
+ */
 class SpectrumListFragment : Fragment(), ItemClickListener {
 
     private val listViewModel: SpectrumListViewModel by sharedViewModel()

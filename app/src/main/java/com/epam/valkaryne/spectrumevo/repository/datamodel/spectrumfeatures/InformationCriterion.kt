@@ -2,6 +2,11 @@ package com.epam.valkaryne.spectrumevo.repository.datamodel.spectrumfeatures
 
 import com.epam.valkaryne.spectrumevo.repository.datamodel.spectrumfeatures.Criterion.Companion.CRITERIA_COUNT
 
+/**
+ * Data class describes information criteria of a game.
+ *
+ * @author Valentine Litvin
+ */
 data class InformationCriterion(
     var education: Int = 0,
     var riddle: Int = 0,

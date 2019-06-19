@@ -17,6 +17,12 @@ import com.epam.valkaryne.spectrumevo.viewmodel.SpectrumDetailsViewModel
 import com.epam.valkaryne.spectrumevo.viewmodel.SpectrumListViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
+/**
+ * [SpectrumPageFragment] is responsible for presentation of games list stored in local
+ * database.
+ *
+ * @author Valentine Litvin
+ */
 class SpectrumPageFragment : Fragment(), ItemClickListener {
 
     private val onDeleteClickListener = object : OnDeleteClickListener {

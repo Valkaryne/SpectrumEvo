@@ -11,6 +11,11 @@ import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
 import com.github.mikephil.charting.utils.ColorTemplate
 
+/**
+ * [BarRatingView] is a widget displays components of game rating in the shape of horizontal bars.
+ *
+ * @author Valentine Litvin
+ */
 class BarRatingView(context: Context?, attrs: AttributeSet?) :
     HorizontalBarChart(context, attrs) {
 

@@ -13,6 +13,11 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.utils.ColorTemplate
 
+/**
+ * [PieRatingLabel] is a widget displays common game rating and generalized weights of criteria.
+ *
+ * @author Valentine Litvin
+ */
 class PieRatingLabel(context: Context?, attrs: AttributeSet?) :
     PieChart(context, attrs) {
 

@@ -19,6 +19,12 @@ import com.epam.valkaryne.spectrumevo.viewmodel.SpectrumDetailsViewModel
 import it.xabaras.android.viewpagerindicator.widget.ViewPagerIndicator
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
+/**
+ * [SpectrumDetailsFragment] is responsible for presentation of default-form details of
+ * chosen game.
+ *
+ * @author Valentine Litvin
+ */
 class SpectrumDetailsFragment : Fragment() {
 
     private val detailsViewModel: SpectrumDetailsViewModel by sharedViewModel()

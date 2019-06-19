@@ -10,12 +10,17 @@ import com.epam.valkaryne.spectrumevo.repository.datamodel.spectrumfeatures.Cont
 import com.epam.valkaryne.spectrumevo.repository.datamodel.spectrumfeatures.InformationCriterion
 import com.epam.valkaryne.spectrumevo.repository.datamodel.spectrumfeatures.SpecRating
 
+/**
+ * [RatingPagesAdapter] is reponsible for representation of nested ViewPager.
+ *
+ * @author Valentine Litvin
+ */
 class RatingPagesAdapter : PagerAdapter() {
 
-    val specRating = SpecRating(0, 0, 0)
-    val infoCriterion = InformationCriterion(0, 0, 0, 0, 0)
-    val actionCriterion = ActionCriterion(0, 0, 0, 0, 0)
-    val controlCriterion = ControlCriterion(0, 0, 0, 0, 0)
+    val specRating = SpecRating()
+    val infoCriterion = InformationCriterion()
+    val actionCriterion = ActionCriterion()
+    val controlCriterion = ControlCriterion()
 
     override fun isViewFromObject(view: View, `object`: Any) = view == `object`
 

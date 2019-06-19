@@ -4,6 +4,11 @@ import androidx.room.TypeConverter
 import com.epam.valkaryne.spectrumevo.repository.datamodel.Genre
 import com.google.gson.Gson
 
+/**
+ * Converter to get JSON string from genres array and visa-versa.
+ *
+ * @author Valentine Litvin
+ */
 class GenresConverter {
 
     private val gson = Gson()

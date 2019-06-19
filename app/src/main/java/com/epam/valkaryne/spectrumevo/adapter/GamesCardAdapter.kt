@@ -17,6 +17,11 @@ import com.epam.valkaryne.spectrumevo.listeners.OnDeleteClickListener
 import com.epam.valkaryne.spectrumevo.repository.datamodel.Game
 import com.epam.valkaryne.spectrumevo.view.widgets.PieRatingLabel
 
+/**
+ * [GamesCardAdapter] exposes games data in material cards on ViewPager.
+ *
+ * @author Valentine Litvin
+ */
 class GamesCardAdapter(
     private val clickListener: ItemClickListener,
     private val onDeleteClickListener: OnDeleteClickListener
