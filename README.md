@@ -1,5 +1,4 @@
 # SpectrumEvo
-Enhanced database for videogames
 
 **SpectrumEvo** is the enhanced database for videogames. It suggests you fundamentally new system of rating based on rating components and criteria. For the first time you can only test this system by yourself, but in possible future you will be able to get average criteria weights from all users and share your favorites.
 
