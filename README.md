@@ -9,7 +9,7 @@ The idea of rating system belongs to: http://gamesisart.ru/
 ## Screenshots
 
 List of games
-![](screenshots/list_night.png "List of games") ![](screenshots/list_day.png "List of games")  
+![](screenshots/list_night.png "List of games"){:height="50%" width="50%"} ![](screenshots/list_day.png "List of games"){:height="50%" width="50%"}  
 
 Default details
 ![](screenshots/default_details_night.png "Default details") ![](screenshots/default_details_day.png "Default details") 
