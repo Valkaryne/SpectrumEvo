@@ -9,18 +9,23 @@ The idea of rating system belongs to: http://gamesisart.ru/
 ## Screenshots
 
 List of games
+
 ![](screenshots/list_night.png "List of games") ![](screenshots/list_day.png "List of games")
 
 Default details
+
 ![](screenshots/default_details_night.png "Default details") ![](screenshots/default_details_day.png "Default details") 
 
 Pages with games
+
 ![](screenshots/pages_night.png "Pages with games") ![](screenshots/pages_day.png "Pages with games") 
 
 Spectrum rating
+
 ![](screenshots/rating_night.png "Spectrum rating") ![](screenshots/rating_day.png "Spectrum rating") 
 
 Spectrum web
+
 ![](screenshots/web_night.png "Spectrum web") ![](screenshots/web_day.png "Spectrum web") 
 
 ## Technologies
