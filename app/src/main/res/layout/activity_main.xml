@@ -25,7 +25,7 @@
         app:itemTextColor="@drawable/nav_item_color_state"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fragments_container"
-        app:menu="@menu/bottom_navigation_menu" />
+        app:menu="@menu/navigation_menu" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
